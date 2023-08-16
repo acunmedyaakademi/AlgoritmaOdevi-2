@@ -11,6 +11,7 @@ namespace HomeworkWeek2
     {
         static void Main(string[] args)
         {
+        bas:
             Console.Write("Soru Sayısı girin : ");
             string question = Console.ReadLine();
 
@@ -29,6 +30,15 @@ namespace HomeworkWeek2
             else if (question == "4")
             {
                 Question4();
+            }
+            else if (question == "5")
+            {
+                Question5();
+            }
+            else
+            {
+                Console.Write("Hatalı Sayı girdiniz");
+                goto bas;
             }
 
         }
@@ -134,37 +144,56 @@ namespace HomeworkWeek2
         }
         static void Question5()
         {
+            bool statüs = true;
+            
+
+            int result = Convert.ToInt32(Input());
+            
 
 
-            do
+
+
+            while (statüs)
             {
-                result = Convert.ToInt32(Console.ReadLine());
-                if (result == Convert.ToInt32(list[0]) + Convert.ToInt32(list[1]))
+                int cevapx = Convert.ToInt32(Console.ReadLine());
+                if (result == cevapx)
                 {
                     Console.WriteLine("Çok güzel");
+                    Console.ReadLine();
                     statüs = false;
                 }
                 else
                 {
                     Console.WriteLine("Lütfen tekrar deneyin");
+                    
                 }
+            }
+            
 
-            } while (statüs == true);
+                
 
 
         }
-        public string input()
+        public static string Input()
         {
             int result = 0;
             string input;
             string statüs = "True";
-            Console.WriteLine("Çarpmak istediğiniz 1 basamaklı 2 sayıyı giriniz : ");
+            Console.WriteLine("Çarpmak istediğiniz 1 basamaklı 2 sayıyı aralarında boşluk bırakarak giriniz : ");
             input = Console.ReadLine();
             var list = input.Split(' ');
             Console.WriteLine($"{list[0]} kere {list[1]} kaçtır ?");
-            return list[0];
-            return list[1];
-            return statüs;
+            try
+            {
+                return (Convert.ToUInt16(list[0]) * Convert.ToUInt16(list[1])).ToString();
+            }
+            catch (Exception)
+            {
+
+                return "Girilen sayılar hatalı";
+            }
+   
+
             
         }
     }
