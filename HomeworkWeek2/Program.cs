@@ -97,16 +97,26 @@ namespace HomeworkWeek2
                 for (int i = 0; i < list.Count; i++)
                 {
                     number = Convert.ToInt32(list[i].ToString()) + 7;
-                    pass = number - 10;
-                    if (pass >= 0)
+                    if (number >= 10)
                     {
-                        newlist.Add(pass);
+                        number = number - 10;
+                        newlist.Add(number);
                     }
-                    else if (pass < 0)
+                    else if (number < 10)
                     {
-                        pass = pass * (-1);
-                        newlist.Add(pass);
+                        newlist.Add(number);
                     }
+
+                    //pass = number - 10;
+                    //if (pass >= 0)
+                    //{
+                    //    newlist.Add(pass);
+                    //}
+                    //else if (pass < 0)
+                    //{
+                    //    pass = pass * (-1);
+                    //    newlist.Add(pass);
+                    //}
                 }
                 Console.WriteLine("GÖnderilen şifreli veri : " + newlist[2] + newlist[3] + newlist[0] + newlist[1]);
             }
@@ -119,17 +129,29 @@ namespace HomeworkWeek2
                 var list = mess.ToList();
                 for (int i = 0; i < list.Count; i++)
                 {
-                    number = Convert.ToInt32(list[i].ToString()) + 7;
-                    pass = number - 10;
-                    if (pass >= 0)
+                    number = Convert.ToInt32(list[i].ToString());
+
+                    if (number >= 0 && number<=6)
                     {
-                        returnlist.Add(pass);
+                        number = number + 3;
+                        returnlist.Add(number);
                     }
-                    else if (pass < 0)
+                    else
                     {
-                        pass = pass * (-1);
-                        returnlist.Add(pass);
+                        number = number - 7;
+                        returnlist.Add(number);
                     }
+                    
+                    //pass = number - 10;
+                    //if (pass >= 0)
+                    //{
+                    //    returnlist.Add(pass);
+                    //}
+                    //else if (pass < 0)
+                    //{
+                    //    pass = pass * (-1);
+                    //    returnlist.Add(pass);
+                    //}
                 }
                 Console.WriteLine("GÖnderilen şifreli veri : " + returnlist[2] + returnlist[3] + returnlist[0] + returnlist[1]);
             }
