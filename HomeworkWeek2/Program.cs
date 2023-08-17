@@ -84,7 +84,6 @@ namespace HomeworkWeek2
             Console.WriteLine("Şifreli mesaj göndermek için 1 Şifreli mesajı çözmek için 2 giriniz.");
             int result = Convert.ToInt32(Console.ReadLine());
             int number = 0;
-            int pass = 0;
             string mess;
             var newlist = new List<int>();
             var returnlist = new List<int>();
@@ -173,7 +172,7 @@ namespace HomeworkWeek2
         }
         //*****************QUESTION_4*************************//
         
-        static bool mukemmel(int sayi)
+        static bool check( int sayi)
         {
             int toplam = 0;
             for (int i = 1; i < sayi; i++)
@@ -189,9 +188,9 @@ namespace HomeworkWeek2
         static void Question4()
         {
 
-            for (int i = 1; i < 2000; i++)
+            for (int i = 1; i < 1000000000; i++)
             {
-                if (mukemmel(i) == true)
+                if (check(i) == true)
                 {
                     Console.WriteLine($"{i} Mükemmel sayıdır.");
                 }
@@ -248,17 +247,33 @@ namespace HomeworkWeek2
         //*****************QUESTION_6*************************//
         static void Question6()
         {
+            int total = 0;
+            List<int> numberList = new List<int>() {1,1,1,2,3,4,6,6,4,3,8,9,4,0};
+            int lenght = numberList.Count - 1;
+            for (int i = 0; i < lenght ; i++)
+            {
+                for (int j = 0; j < lenght; j++)
+                {
+                    if (numberList[i] == numberList[j])
+                    {
+                        total += 1;
+                    }
+                }
+                if (total > 1)
+                {
+                    numberList.Remove(numberList[i]);
+                    total -= 1;
+                    lenght -= 1;
+                }
+            }
+            foreach (var item in numberList)
+            {
+                Console.WriteLine(item.ToString());
+            }
+            Console.ReadKey();
 
 
-
-
-
-
-
-
-
-
-            
+ 
         }
         //*****************QUESTION_7*************************//
         static void Question7()
