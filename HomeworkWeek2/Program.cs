@@ -35,6 +35,18 @@ namespace HomeworkWeek2
             {
                 Question5();
             }
+            else if (question == "6")
+            {
+                Question6();
+            }
+            else if (question == "7")
+            {
+                Question7();
+            }
+            else if (question == "8")
+            {
+                Question8();
+            }
             else
             {
                 Console.Write("Hatalı Sayı girdiniz");
@@ -42,7 +54,7 @@ namespace HomeworkWeek2
             }
 
         }
-
+        //*****************QUESTION_1*************************//
         static void Question1()
         {
             int i = 0;
@@ -65,7 +77,7 @@ namespace HomeworkWeek2
             }
             Console.ReadLine();
         }
-
+        //*****************QUESTION_2*************************//
         static void Question2()
         {
             // Mesaj Şifreleme 
@@ -96,7 +108,7 @@ namespace HomeworkWeek2
                         newlist.Add(pass);
                     }
                 }
-                Console.WriteLine("GÖnderilen şifreli veri : " + newlist[3] + newlist[4] + newlist[1] + newlist[2]);
+                Console.WriteLine("GÖnderilen şifreli veri : " + newlist[2] + newlist[3] + newlist[0] + newlist[1]);
             }
 
             // Mesaj Çözme 
@@ -119,10 +131,11 @@ namespace HomeworkWeek2
                         returnlist.Add(pass);
                     }
                 }
-                Console.WriteLine("GÖnderilen şifreli veri : " + newlist[3] + newlist[4] + newlist[1] + newlist[2]);
+                Console.WriteLine("GÖnderilen şifreli veri : " + returnlist[2] + returnlist[3] + returnlist[0] + returnlist[1]);
             }
             Console.ReadKey();
         }
+        //*****************QUESTION_3*************************//
         static void Question3()
         {
             int number = 0;
@@ -136,31 +149,62 @@ namespace HomeworkWeek2
             Console.WriteLine("Toplam : " + number);
             Console.ReadKey();
         }
+        //*****************QUESTION_4*************************//
+        
+        static bool mukemmel(int sayi)
+        {
+            int toplam = 0;
+            for (int i = 1; i < sayi; i++)
+            {
+                if (sayi % i == 0)
+                {
+                    toplam += i;
+                }
+            }
+            return toplam == sayi;
+        }
+
         static void Question4()
         {
 
-            Console.WriteLine("TAMAMLAAAAA");
-            Console.ReadKey();
+            for (int i = 1; i < 2000; i++)
+            {
+                if (mukemmel(i) == true)
+                {
+                    Console.WriteLine($"{i} Mükemmel sayıdır.");
+                }
+            }
+            Console.ReadLine();
+
+
+           
+
+
         }
+        //*****************QUESTION_5*************************//
         static void Question5()
         {
             bool statüs = true;
-            
-
             int result = Convert.ToInt32(Input());
             
-
-
-
-
             while (statüs)
             {
                 int cevapx = Convert.ToInt32(Console.ReadLine());
                 if (result == cevapx)
                 {
                     Console.WriteLine("Çok güzel");
-                    Console.ReadLine();
-                    statüs = false;
+                    
+                    Console.WriteLine("Yeni soru girmek istiyor musunuz?(y/n)");
+                    string input = Console.ReadLine();
+                    if (input.ToLower() =="y" || input.ToLower() == "yes")
+                    {
+                        statüs = true;
+                        result = Convert.ToInt32(Input());
+                    }
+                    else if (input.ToLower() == "n" || input.ToLower() == "no")
+                    {
+                        statüs = false;
+                    }
                 }
                 else
                 {
@@ -169,32 +213,81 @@ namespace HomeworkWeek2
                 }
             }
             
-
-                
-
-
         }
         public static string Input()
         {
-            int result = 0;
             string input;
-            string statüs = "True";
-            Console.WriteLine("Çarpmak istediğiniz 1 basamaklı 2 sayıyı aralarında boşluk bırakarak giriniz : ");
+            Console.Write("Çarpmak istediğiniz 1 basamaklı 2 sayıyı aralarında boşluk bırakarak giriniz : ");
             input = Console.ReadLine();
             var list = input.Split(' ');
             Console.WriteLine($"{list[0]} kere {list[1]} kaçtır ?");
-            try
-            {
-                return (Convert.ToUInt16(list[0]) * Convert.ToUInt16(list[1])).ToString();
-            }
-            catch (Exception)
-            {
+            return (Convert.ToUInt16(list[0]) * Convert.ToUInt16(list[1])).ToString();   
+        }
+        //*****************QUESTION_6*************************//
+        static void Question6()
+        {
 
-                return "Girilen sayılar hatalı";
-            }
-   
+
+
+
+
+
+
+
+
 
             
+        }
+        //*****************QUESTION_7*************************//
+        static void Question7()
+        {
+            Console.WriteLine("Aralarında birer boşluk bırakacak şekilde diziye eklemek istediğiniz sayıları girin : ");
+            var list = Console.ReadLine().Split(' ');
+            List<int> numberList = new List<int>();
+            List<int> asalList = new List<int>();
+            int count = 0;
+            for (int i = 0; i < list.Count(); i++)
+            {
+                numberList.Add(Convert.ToInt32(list[i]));
+            }
+            for (int i = 0; i < numberList.Count; i++)
+            {
+                for (int j = 2; j <= numberList[i]; j++)
+                {
+                    int result = numberList[i] % j ;
+                    if (result == 0)
+                    {
+                        count +=1;
+                    }
+                }
+                if (count == 1)
+                {
+                    asalList.Add(numberList[i]);
+                }
+                count = 0;
+            }
+            Console.WriteLine("Asal sayılar aşağıdadır. ");
+            foreach (var item in asalList)
+            {
+                Console.WriteLine($"{item.ToString()}");
+            }
+            Console.ReadKey();  
+        }
+        //*****************QUESTION_8*************************//
+        static void Question8()
+        {
+            Console.WriteLine("Aralarında birer boşluk bırakacak şekilde listeye eklemek istediğiniz sayıları girin : ");
+            var list = Console.ReadLine().Split(' ');
+            List<int> numberList = new List<int>();
+            for (int i = 0; i < list.Count(); i++)
+            {
+                numberList.Add(Convert.ToInt32(list[i]));
+            }
+            int smallest = numberList.Min();
+            int biggest = numberList.Max();
+            Console.WriteLine($"En küçük sayı : {smallest}");
+            Console.WriteLine($"En Büyük sayı : {biggest}");
+            Console.ReadKey();
         }
     }
 }
